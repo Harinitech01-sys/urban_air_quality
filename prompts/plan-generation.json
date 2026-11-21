@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "name": "daily_plan_generation",
+  "description": "Prompts Gemini to generate a personalized 6-time-block smog coping routine grounded in live AQI and calculated impact ranges.",
+  "jsonSchema": {
+    "type": "object",
+    "properties": {
+      "summaryNote": {
+        "type": "string",
+        "description": "1-2 sentence empathetic, practical summary tailored to the household's budget and vulnerabilities."
+      },
+      "recommendations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "timeBlock": { "type": "string", "enum": ["morning", "commute", "school_work", "evening", "dinner", "night"] },
+            "timeLabel": { "type": "string" },
+            "category": { "type": "string", "enum": ["ventilation", "mask", "commute", "cooking", "activity", "filtration"] },
+            "action": { "type": "string", "description": "Clear, actionable guidance." },
+            "why": { "type": "string", "description": "Scientific reason in plain language (e.g. nocturnal inversion layer, tailpipe plume)." },
+            "estimatedImpact": { "type": "string", "description": "Direct quantified impact range quoting the calculated numbers." },
+            "cost": { "type": "string", "enum": ["free", "low", "medium"] },
+            "confidence": { "type": "string", "enum": ["High", "Moderate"] },
+            "assumptions": { "type": "string", "description": "Plain language explanation of how this was calculated." }
+          },
+          "required": ["timeBlock", "timeLabel", "category", "action", "why", "estimatedImpact", "cost", "confidence", "assumptions"]
+        }
+      }
+    },
+    "required": ["summaryNote", "recommendations"]
+  }
+}

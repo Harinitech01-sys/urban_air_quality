@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "name": "chat_assistant",
+  "description": "Structured 5-part conversational assistant answer grounded in RAG knowledge and user profile.",
+  "structure": {
+    "shortAnswer": "Direct 1-2 sentence answer addressing user query directly.",
+    "whatToDoNow": "Bulleted immediate concrete steps prioritizing free/low-cost interventions.",
+    "why": "Clear scientific mechanism (e.g. inversion layer trapping, ventilation rate during exertion, aerosol capture).",
+    "impactEstimate": "Quantified reduction quoting calculator ranges.",
+    "caveats": "Crucial safety warnings (e.g. fit leakage, mask suitability, medical disclaimer)."
+  },
+  "jsonSchema": {
+    "type": "object",
+    "properties": {
+      "shortAnswer": { "type": "string" },
+      "whatToDoNow": { "type": "array", "items": { "type": "string" } },
+      "why": { "type": "string" },
+      "impactEstimate": { "type": "string" },
+      "caveats": { "type": "string" },
+      "isEmergency": { "type": "boolean" },
+      "emergencyNotice": { "type": "string" }
+    },
+    "required": ["shortAnswer", "whatToDoNow", "why", "impactEstimate", "caveats"]
+  }
+}
